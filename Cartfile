@@ -1,0 +1,4 @@
+github "kazuhiro4949/EditDistance"
+github "RxSwiftCommunity/RxDataSources" ~> 3.0
+github "ra1028/DifferenceKit"
+github "jflinter/Dwifft"
