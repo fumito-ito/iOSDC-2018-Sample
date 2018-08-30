@@ -8,28 +8,89 @@
 
 import UIKit
 
-class ReloadDataViewController: UIViewController {
+class ReloadDataViewController: UIViewController, SeedGeneratable, SeedUpdatable, MegaSeedGeneratable {
+
+    @IBOutlet weak var fpsLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var source: [UUID] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(DwifftViewController.didFpsLabelTapped(sender:)))
+        self.fpsLabel.addGestureRecognizer(recognizer)
+        self.fpsLabel.isUserInteractionEnabled = true
+        self.fpsLabel.text = "Tap to ReloadData"
+
+        self.source = self.seed
+        self.tableView.reloadData()
+    }
+
+    @objc func didFpsLabelTapped(sender: UIGestureRecognizer) {
+        self.fpsLabel.text = "Calculating..."
+
+        self.reload { [weak self] isCompleted, estimatedTime in
+            if isCompleted {
+                self?.fpsLabel.text = "Estimated Time is \(floor(estimatedTime * 100000.0) / 100) ms"
+            } else {
+                self?.fpsLabel.text = "Filed to calculate estimate time"
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
+    func reload(completion: ((Bool, TimeInterval) -> Void)? = nil) {
+        DispatchQueue.global().async { [weak self] in
+            guard let `self` = self else {
+                completion?(false, 0.0)
+                return
+            }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+            let newValue = self.getNewValue()
+            self.source = newValue
+
+            DispatchQueue.main.async {
+                let start = Date()
+                self.tableView.reloadData()
+                let end = Date()
+
+                completion?(true, end.timeIntervalSince(start))
+            }
+        }
     }
-    */
 
+    func getNewValue() -> [UUID] {
+        return self.update(self.source, insertionRatio: 0.1, deletionRatio: 0.1)
+    }
+}
+
+extension ReloadDataViewController: UITableViewDelegate {
+}
+
+extension ReloadDataViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return source.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+
+        cell.textLabel?.text = self.source[indexPath.row].uuidString
+
+        return cell
+    }
 }
