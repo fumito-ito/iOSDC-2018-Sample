@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jYB-kh-2f6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hfu-EG-31v">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -215,16 +215,41 @@
             </objects>
             <point key="canvasLocation" x="3014" y="287"/>
         </scene>
-        <!--View Controller-->
+        <!--Difference Kit View Controller-->
         <scene sceneID="FBg-Ym-s4d">
             <objects>
-                <viewController id="hfu-EG-31v" sceneMemberID="viewController">
+                <viewController id="hfu-EG-31v" customClass="DifferenceKitViewController" customModule="iOSDC_2018_Sample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZBh-f9-XOj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5LY-f8-JR5">
+                                <rect key="frame" x="8" y="28" width="359" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="utc-L0-d8q">
+                                <rect key="frame" x="0.0" y="57" width="375" height="610"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="utc-L0-d8q" firstAttribute="leading" secondItem="WrW-qN-ubM" secondAttribute="leading" id="3gm-1B-trv"/>
+                            <constraint firstItem="WrW-qN-ubM" firstAttribute="bottom" secondItem="utc-L0-d8q" secondAttribute="bottom" id="6Xz-BC-Ski"/>
+                            <constraint firstItem="WrW-qN-ubM" firstAttribute="trailing" secondItem="5LY-f8-JR5" secondAttribute="trailing" constant="8" id="92q-bH-Vkx"/>
+                            <constraint firstItem="utc-L0-d8q" firstAttribute="top" secondItem="5LY-f8-JR5" secondAttribute="bottom" constant="8" id="nM6-Qu-12c"/>
+                            <constraint firstItem="5LY-f8-JR5" firstAttribute="leading" secondItem="WrW-qN-ubM" secondAttribute="leading" constant="8" id="tWE-df-1st"/>
+                            <constraint firstItem="WrW-qN-ubM" firstAttribute="trailing" secondItem="utc-L0-d8q" secondAttribute="trailing" id="uqc-8o-a6N"/>
+                            <constraint firstItem="5LY-f8-JR5" firstAttribute="top" secondItem="WrW-qN-ubM" secondAttribute="top" constant="8" id="ybs-WH-VzM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="WrW-qN-ubM"/>
                     </view>
+                    <connections>
+                        <outlet property="fpsLabel" destination="5LY-f8-JR5" id="6Gh-52-Z1g"/>
+                        <outlet property="tableView" destination="utc-L0-d8q" id="OeO-05-TS6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqD-B2-fkd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
