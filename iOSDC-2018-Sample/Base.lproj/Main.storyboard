@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dYP-bd-7IP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cnf-GF-pe4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -175,16 +175,41 @@
             </objects>
             <point key="canvasLocation" x="793" y="321"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Distance View Controller-->
         <scene sceneID="w8K-rK-BN9">
             <objects>
-                <viewController id="cnf-GF-pe4" sceneMemberID="viewController">
+                <viewController id="cnf-GF-pe4" customClass="EditDistanceViewController" customModule="iOSDC_2018_Sample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CH3-8M-4qB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92r-zO-xRC">
+                                <rect key="frame" x="8" y="28" width="359" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1xU-LS-iTC">
+                                <rect key="frame" x="0.0" y="57" width="375" height="610"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1xU-LS-iTC" firstAttribute="top" secondItem="92r-zO-xRC" secondAttribute="bottom" constant="8" id="Kj8-Qh-bR8"/>
+                            <constraint firstItem="92r-zO-xRC" firstAttribute="leading" secondItem="Rbx-ec-Wly" secondAttribute="leading" constant="8" id="X8y-Iy-irO"/>
+                            <constraint firstItem="Rbx-ec-Wly" firstAttribute="trailing" secondItem="1xU-LS-iTC" secondAttribute="trailing" id="eYf-df-4Lt"/>
+                            <constraint firstItem="Rbx-ec-Wly" firstAttribute="trailing" secondItem="92r-zO-xRC" secondAttribute="trailing" constant="8" id="nkt-st-ZEY"/>
+                            <constraint firstItem="Rbx-ec-Wly" firstAttribute="bottom" secondItem="1xU-LS-iTC" secondAttribute="bottom" id="op9-JY-BTX"/>
+                            <constraint firstItem="92r-zO-xRC" firstAttribute="top" secondItem="Rbx-ec-Wly" secondAttribute="top" constant="8" id="pRx-7J-EYZ"/>
+                            <constraint firstItem="1xU-LS-iTC" firstAttribute="leading" secondItem="Rbx-ec-Wly" secondAttribute="leading" id="xMm-OQ-veb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Rbx-ec-Wly"/>
                     </view>
+                    <connections>
+                        <outlet property="fpsLabel" destination="92r-zO-xRC" id="3Lp-7Y-e5s"/>
+                        <outlet property="tableView" destination="1xU-LS-iTC" id="scn-bk-7yf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PBF-EU-WTK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
