@@ -15,6 +15,7 @@
 		C56D8EA321381FA000C5C568 /* DwifftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56D8EA221381FA000C5C568 /* DwifftViewController.swift */; };
 		C56D8EA7213823C500C5C568 /* SeedGeneratable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56D8EA6213823C500C5C568 /* SeedGeneratable.swift */; };
 		C56D8EAC21383F6E00C5C568 /* EditDistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56D8EAB21383F6E00C5C568 /* EditDistanceViewController.swift */; };
+		C56D8EAE213841E000C5C568 /* RxDataSourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56D8EAD213841E000C5C568 /* RxDataSourcesViewController.swift */; };
 		C597D9592133F8BE0023A464 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C597D9522133F8BD0023A464 /* RxDataSources.framework */; };
 		C597D95A2133F8BE0023A464 /* DifferenceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C597D9532133F8BD0023A464 /* DifferenceKit.framework */; };
 		C597D95B2133F8BE0023A464 /* Dwifft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C597D9542133F8BD0023A464 /* Dwifft.framework */; };
@@ -35,6 +36,7 @@
 		C56D8EA221381FA000C5C568 /* DwifftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DwifftViewController.swift; sourceTree = "<group>"; };
 		C56D8EA6213823C500C5C568 /* SeedGeneratable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedGeneratable.swift; sourceTree = "<group>"; };
 		C56D8EAB21383F6E00C5C568 /* EditDistanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDistanceViewController.swift; sourceTree = "<group>"; };
+		C56D8EAD213841E000C5C568 /* RxDataSourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxDataSourcesViewController.swift; sourceTree = "<group>"; };
 		C597D9522133F8BD0023A464 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		C597D9532133F8BD0023A464 /* DifferenceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DifferenceKit.framework; path = Carthage/Build/iOS/DifferenceKit.framework; sourceTree = "<group>"; };
 		C597D9542133F8BD0023A464 /* Dwifft.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dwifft.framework; path = Carthage/Build/iOS/Dwifft.framework; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				C5672CCE2133E32400FBE5E4 /* ViewController.swift */,
 				C56D8EA221381FA000C5C568 /* DwifftViewController.swift */,
 				C56D8EAB21383F6E00C5C568 /* EditDistanceViewController.swift */,
+				C56D8EAD213841E000C5C568 /* RxDataSourcesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				C56D8EAC21383F6E00C5C568 /* EditDistanceViewController.swift in Sources */,
 				C5672CCD2133E32400FBE5E4 /* AppDelegate.swift in Sources */,
 				C56D8EA7213823C500C5C568 /* SeedGeneratable.swift in Sources */,
+				C56D8EAE213841E000C5C568 /* RxDataSourcesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

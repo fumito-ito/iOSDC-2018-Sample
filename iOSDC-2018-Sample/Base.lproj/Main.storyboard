@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cnf-GF-pe4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jYB-kh-2f6">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -230,16 +230,41 @@
             </objects>
             <point key="canvasLocation" x="1780" y="1904"/>
         </scene>
-        <!--View Controller-->
+        <!--Rx Data Sources View Controller-->
         <scene sceneID="gHN-Ae-K5K">
             <objects>
-                <viewController id="jYB-kh-2f6" sceneMemberID="viewController">
+                <viewController id="jYB-kh-2f6" customClass="RxDataSourcesViewController" customModule="iOSDC_2018_Sample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UsY-KK-qGJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v8M-Mi-W7n">
+                                <rect key="frame" x="0.0" y="57" width="375" height="610"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZs-Vj-uj7">
+                                <rect key="frame" x="8" y="28" width="359" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="v8M-Mi-W7n" firstAttribute="top" secondItem="eZs-Vj-uj7" secondAttribute="bottom" constant="8" id="00E-i2-c2n"/>
+                            <constraint firstItem="5Bn-lM-sZp" firstAttribute="trailing" secondItem="v8M-Mi-W7n" secondAttribute="trailing" id="DWX-73-ARe"/>
+                            <constraint firstItem="eZs-Vj-uj7" firstAttribute="leading" secondItem="5Bn-lM-sZp" secondAttribute="leading" constant="8" id="JuL-qt-JWN"/>
+                            <constraint firstItem="v8M-Mi-W7n" firstAttribute="leading" secondItem="5Bn-lM-sZp" secondAttribute="leading" id="NZH-oL-nwO"/>
+                            <constraint firstItem="eZs-Vj-uj7" firstAttribute="top" secondItem="5Bn-lM-sZp" secondAttribute="top" constant="8" id="Wrp-91-CPv"/>
+                            <constraint firstItem="5Bn-lM-sZp" firstAttribute="bottom" secondItem="v8M-Mi-W7n" secondAttribute="bottom" id="XFw-6f-oaM"/>
+                            <constraint firstItem="5Bn-lM-sZp" firstAttribute="trailing" secondItem="eZs-Vj-uj7" secondAttribute="trailing" constant="8" id="taI-iJ-RPF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5Bn-lM-sZp"/>
                     </view>
+                    <connections>
+                        <outlet property="fpsLabel" destination="eZs-Vj-uj7" id="vqf-7N-3Be"/>
+                        <outlet property="tableView" destination="v8M-Mi-W7n" id="A1G-rE-GPt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JZ4-MT-Qv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
