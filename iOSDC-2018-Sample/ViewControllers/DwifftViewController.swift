@@ -38,7 +38,7 @@ class DwifftViewController: UIViewController, SeedGeneratable, SeedUpdatable, Me
 
         self.reload { [weak self] isCompleted, estimatedTime in
             if isCompleted {
-                self?.fpsLabel.text = "Estimated Time is \(floor(estimatedTime * 1000.0)) ms"
+                self?.fpsLabel.text = "Estimated Time is \(floor(estimatedTime * 100000.0) / 100) ms"
             } else {
                 self?.fpsLabel.text = "Filed to calculate estimate time"
             }
