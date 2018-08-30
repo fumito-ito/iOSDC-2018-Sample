@@ -90,14 +90,6 @@ class RxDataSourcesViewController: UIViewController, SeedGeneratable, SeedUpdata
     }
 }
 
-extension UUID: IdentifiableType {
-    public typealias Identity = Int
-
-    public var identity: Int {
-        return self.hashValue
-    }
-}
-
 extension RxDataSourcesViewController: UITableViewDelegate {
 }
 
