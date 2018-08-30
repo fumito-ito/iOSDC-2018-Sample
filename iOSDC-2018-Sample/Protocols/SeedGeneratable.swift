@@ -9,24 +9,28 @@
 import Foundation
 
 protocol SeedGeneratable {
+    var source: [UUID] { get set }
 }
 
 extension SeedGeneratable {
-    var seed: [UUID] {
-        return (1...1000).map({ _ in UUID() })
+    mutating func prepareSeed() {
+        self.source = (1...1000).map({ _ in UUID() })
     }
 }
 
-protocol MegaSeedGeneratable {
+protocol MegaSeedGeneratable: SeedGeneratable {
 }
 
 extension MegaSeedGeneratable {
-    var megaSeed: [UUID] {
-        return (1...1000000).map({ _ in UUID() })
+    mutating func prepareSeed() {
+        self.source = (1...10000).map({ _ in UUID() })
     }
 }
 
 protocol SeedUpdatable {
+    var insertionRatio: Double { get set }
+
+    var deletionRatio: Double { get set }
 }
 
 extension SeedUpdatable {
@@ -47,5 +51,11 @@ extension SeedUpdatable {
         }
 
         return insertion + seed
+    }
+}
+
+extension SeedUpdatable where Self: SeedGeneratable {
+    func getNewValue() -> [UUID] {
+        return self.update(self.source, insertionRatio: self.insertionRatio, deletionRatio: self.deletionRatio)
     }
 }

@@ -16,6 +16,10 @@ class DifferenceKitViewController: UIViewController, SeedGeneratable, SeedUpdata
     
     var source: [UUID] = []
 
+    var insertionRatio: Double = 0
+
+    var deletionRatio: Double = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +33,6 @@ class DifferenceKitViewController: UIViewController, SeedGeneratable, SeedUpdata
         self.fpsLabel.isUserInteractionEnabled = true
         self.fpsLabel.text = "Tap to ReloadData"
 
-        self.source = self.seed
         self.tableView.reloadData()
     }
 
@@ -72,10 +75,6 @@ class DifferenceKitViewController: UIViewController, SeedGeneratable, SeedUpdata
                 self.tableView.endUpdates()
             }
         }
-    }
-
-    func getNewValue() -> [UUID] {
-        return self.update(self.source, insertionRatio: 0.1, deletionRatio: 0.1)
     }
 }
 

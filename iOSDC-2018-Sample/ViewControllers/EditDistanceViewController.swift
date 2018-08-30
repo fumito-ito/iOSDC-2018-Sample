@@ -16,6 +16,10 @@ class EditDistanceViewController: UIViewController, SeedGeneratable, SeedUpdatab
 
     var source: [UUID] = []
 
+    var insertionRatio: Double = 0
+
+    var deletionRatio: Double = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +33,6 @@ class EditDistanceViewController: UIViewController, SeedGeneratable, SeedUpdatab
         self.fpsLabel.isUserInteractionEnabled = true
         self.fpsLabel.text = "Tap to ReloadData"
 
-        self.source = self.seed
         self.tableView.reloadData()
     }
 
@@ -70,10 +73,6 @@ class EditDistanceViewController: UIViewController, SeedGeneratable, SeedUpdatab
                 completion?(true, end.timeIntervalSince(start))
             }
         }
-    }
-
-    func getNewValue() -> [UUID] {
-        return self.update(self.source, insertionRatio: 0.1, deletionRatio: 0.1)
     }
 }
 
