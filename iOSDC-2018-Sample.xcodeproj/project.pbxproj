@@ -12,6 +12,7 @@
 		C5672CD22133E32400FBE5E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5672CD02133E32400FBE5E4 /* Main.storyboard */; };
 		C5672CD42133E32500FBE5E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5672CD32133E32500FBE5E4 /* Assets.xcassets */; };
 		C5672CD72133E32500FBE5E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5672CD52133E32500FBE5E4 /* LaunchScreen.storyboard */; };
+		C56D8EA321381FA000C5C568 /* DwifftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56D8EA221381FA000C5C568 /* DwifftViewController.swift */; };
 		C56D8EA7213823C500C5C568 /* SeedGeneratable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56D8EA6213823C500C5C568 /* SeedGeneratable.swift */; };
 		C597D9592133F8BE0023A464 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C597D9522133F8BD0023A464 /* RxDataSources.framework */; };
 		C597D95A2133F8BE0023A464 /* DifferenceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C597D9532133F8BD0023A464 /* DifferenceKit.framework */; };
@@ -30,6 +31,7 @@
 		C5672CD32133E32500FBE5E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5672CD62133E32500FBE5E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5672CD82133E32500FBE5E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C56D8EA221381FA000C5C568 /* DwifftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DwifftViewController.swift; sourceTree = "<group>"; };
 		C56D8EA6213823C500C5C568 /* SeedGeneratable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedGeneratable.swift; sourceTree = "<group>"; };
 		C597D9522133F8BD0023A464 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		C597D9532133F8BD0023A464 /* DifferenceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DifferenceKit.framework; path = Carthage/Build/iOS/DifferenceKit.framework; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				C5672CCE2133E32400FBE5E4 /* ViewController.swift */,
+				C56D8EA221381FA000C5C568 /* DwifftViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C56D8EA321381FA000C5C568 /* DwifftViewController.swift in Sources */,
 				C5672CCF2133E32400FBE5E4 /* ViewController.swift in Sources */,
 				C5672CCD2133E32400FBE5E4 /* AppDelegate.swift in Sources */,
 				C56D8EA7213823C500C5C568 /* SeedGeneratable.swift in Sources */,
