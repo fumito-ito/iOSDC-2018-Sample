@@ -13,6 +13,10 @@ protocol SeedGeneratable {
 }
 
 extension SeedGeneratable {
+    mutating func prepareMiniSeed() {
+        self.source = (1...100).map({ _ in UUID() })
+    }
+
     mutating func prepareSeed() {
         self.source = (1...1000).map({ _ in UUID() })
     }

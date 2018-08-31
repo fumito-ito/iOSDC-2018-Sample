@@ -22,8 +22,10 @@ class TableViewController: UITableViewController {
     }
 
     let stacks = [
+        ("Ins: 10%, Del: 10%", 100, 0.1, 0.1),
         ("Ins: 10%, Del: 10%", 1000, 0.1, 0.1),
         ("Ins: 10%, Del: 10%", 10000, 0.1, 0.1),
+        ("Ins: 10%, Del: 10%", 100, 0.1, 0.1),
         ("Ins: 30%, Del: 30%", 1000, 0.3, 0.3),
         ("Ins: 30%, Del: 30%", 10000, 0.3, 0.3),
     ]
@@ -37,11 +39,11 @@ class TableViewController: UITableViewController {
     ]
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return self.stacks.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.methods.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,6 +76,9 @@ class TableViewController: UITableViewController {
         }
 
         switch cargo.0 {
+        case 100:
+            var viewController = segue.destination as? SeedGeneratable
+            viewController?.prepareMiniSeed()
         case 1000:
             var viewController = segue.destination as? SeedGeneratable
             viewController?.prepareSeed()
