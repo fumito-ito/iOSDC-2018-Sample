@@ -39,9 +39,9 @@ class DwifftViewController: UIViewController, SeedGeneratable, SeedUpdatable, Me
     @objc func didFpsLabelTapped(sender: UIGestureRecognizer) {
         self.fpsLabel.text = "Calculating..."
 
-        self.reload { [weak self] isCompleted, estimatedTime in
+        self.reload { [weak self] isCompleted, diffTime, mainTime in
             if isCompleted {
-                self?.fpsLabel.text = "Estimated Time is \(floor(estimatedTime * 100000.0) / 100) ms"
+                self?.fpsLabel.text = "Diff is \(floor(diffTime * 100000.0) / 100) ms, Bind main \(floor(mainTime * 100000.0) / 100) ms"
             } else {
                 self?.fpsLabel.text = "Filed to calculate estimate time"
             }
@@ -53,7 +53,7 @@ class DwifftViewController: UIViewController, SeedGeneratable, SeedUpdatable, Me
         // Dispose of any resources that can be recreated.
     }
 
-    func reload(completion: ((Bool, TimeInterval) -> Void)? = nil) {
+    func reload(completion: ((Bool, TimeInterval, TimeInterval) -> Void)? = nil) {
         DispatchQueue.global().async {
             let newValue = self.getNewValue()
 
@@ -64,6 +64,7 @@ class DwifftViewController: UIViewController, SeedGeneratable, SeedUpdatable, Me
             self.source = newValue
 
             DispatchQueue.main.async { [weak self] in
+                let startMain = Date()
                 self?.tableView.performBatchUpdates({
                     steps.forEach({ step in
                         switch step {
@@ -74,7 +75,8 @@ class DwifftViewController: UIViewController, SeedGeneratable, SeedUpdatable, Me
                         }
                     })
                 }) { isCompleted in
-                    completion?(isCompleted, end.timeIntervalSince(start))
+                    let endMain = Date()
+                    completion?(true, end.timeIntervalSince(start), endMain.timeIntervalSince(startMain))
                 }
             }
         }

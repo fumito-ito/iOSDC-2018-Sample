@@ -27,7 +27,7 @@ class ReloadDataViewController: UIViewController, SeedGeneratable, SeedUpdatable
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(DwifftViewController.didFpsLabelTapped(sender:)))
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(ReloadDataViewController.didFpsLabelTapped(sender:)))
         self.fpsLabel.addGestureRecognizer(recognizer)
         self.fpsLabel.isUserInteractionEnabled = true
         self.fpsLabel.text = "Tap to ReloadData"
@@ -64,10 +64,13 @@ class ReloadDataViewController: UIViewController, SeedGeneratable, SeedUpdatable
 
             DispatchQueue.main.async {
                 let start = Date()
-                self.tableView.reloadData()
-                let end = Date()
+                UIView.animate(withDuration: 0.0, animations: {
+                    self.tableView.reloadData()
+                }, completion: { isCompleted in
+                    let end = Date()
+                    completion?(true, end.timeIntervalSince(start))
+                })
 
-                completion?(true, end.timeIntervalSince(start))
             }
         }
     }

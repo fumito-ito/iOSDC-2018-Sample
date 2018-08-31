@@ -28,7 +28,7 @@ class DifferenceKitViewController: UIViewController, SeedGeneratable, SeedUpdata
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(DwifftViewController.didFpsLabelTapped(sender:)))
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(DifferenceKitViewController.didFpsLabelTapped(sender:)))
         self.fpsLabel.addGestureRecognizer(recognizer)
         self.fpsLabel.isUserInteractionEnabled = true
         self.fpsLabel.text = "Tap to ReloadData"
@@ -39,9 +39,9 @@ class DifferenceKitViewController: UIViewController, SeedGeneratable, SeedUpdata
     @objc func didFpsLabelTapped(sender: UIGestureRecognizer) {
         self.fpsLabel.text = "Calculating..."
 
-        self.reload { [weak self] isCompleted, estimatedTime in
+        self.reload { [weak self] isCompleted, diffTime, mainTime in
             if isCompleted {
-                self?.fpsLabel.text = "Estimated Time is \(floor(estimatedTime * 100000.0) / 100) ms"
+                self?.fpsLabel.text = "Diff is \(floor(diffTime * 100000.0) / 100) ms, Bind main \(floor(mainTime * 100000.0) / 100) ms"
             } else {
                 self?.fpsLabel.text = "Filed to calculate estimate time"
             }
@@ -53,10 +53,10 @@ class DifferenceKitViewController: UIViewController, SeedGeneratable, SeedUpdata
         // Dispose of any resources that can be recreated.
     }
 
-    func reload(completion: ((Bool, TimeInterval) -> Void)? = nil) {
+    func reload(completion: ((Bool, TimeInterval, TimeInterval) -> Void)? = nil) {
         DispatchQueue.global().async { [weak self] in
             guard let `self` = self else {
-                completion?(false, 0.0)
+                completion?(false, 0.0, 0.0)
                 return
             }
 
@@ -67,12 +67,18 @@ class DifferenceKitViewController: UIViewController, SeedGeneratable, SeedUpdata
             let end = Date()
 
             DispatchQueue.main.async {
-                self.tableView.beginUpdates()
-                self.tableView.reload(using: steps, with: .fade, setData: { data in
-                    self.source = newValue
-                    completion?(true, end.timeIntervalSince(start))
+                
+                let startMain = Date()
+                UIView.animate(withDuration: 0.0, animations: {
+                    self.tableView.beginUpdates()
+                    self.tableView.reload(using: steps, with: .fade, setData: { data in
+                        self.source = newValue
+                    })
+                    self.tableView.endUpdates()
+                }, completion: { isCompleted in
+                    let endMain = Date()
+                    completion?(true, end.timeIntervalSince(start), endMain.timeIntervalSince(startMain))
                 })
-                self.tableView.endUpdates()
             }
         }
     }
