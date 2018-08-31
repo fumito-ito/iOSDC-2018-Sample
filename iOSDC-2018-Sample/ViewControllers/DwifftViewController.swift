@@ -69,9 +69,9 @@ class DwifftViewController: UIViewController, SeedGeneratable, SeedUpdatable, Me
                     steps.forEach({ step in
                         switch step {
                         case let .insert(index, _):
-                            self?.tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+                            self?.tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .none)
                         case let .delete(index, _):
-                            self?.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+                            self?.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .none)
                         }
                     })
                 }) { isCompleted in

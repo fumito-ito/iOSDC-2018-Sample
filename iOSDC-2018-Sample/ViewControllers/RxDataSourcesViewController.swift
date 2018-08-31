@@ -75,9 +75,10 @@ class RxDataSourcesViewController: UIViewController, SeedGeneratable, SeedUpdata
 
                 let startMain = Date()
                 UIView.animate(withDuration: 0.0, animations: {
+                    let config = AnimationConfiguration(insertAnimation: .none, reloadAnimation: .none, deleteAnimation: .none)
                     self.tableView.beginUpdates()
                     for step in steps {
-                        self.tableView.performBatchUpdates(step, animationConfiguration: AnimationConfiguration.init())
+                        self.tableView.performBatchUpdates(step, animationConfiguration: config)
                     }
                     self.tableView.endUpdates()
                 }, completion: { isCompleted in

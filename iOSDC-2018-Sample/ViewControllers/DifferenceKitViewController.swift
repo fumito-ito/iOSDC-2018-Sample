@@ -67,11 +67,11 @@ class DifferenceKitViewController: UIViewController, SeedGeneratable, SeedUpdata
             let end = Date()
 
             DispatchQueue.main.async {
-                
+
                 let startMain = Date()
                 UIView.animate(withDuration: 0.0, animations: {
                     self.tableView.beginUpdates()
-                    self.tableView.reload(using: steps, with: .fade, setData: { data in
+                    self.tableView.reload(using: steps, with: .none, setData: { data in
                         self.source = newValue
                     })
                     self.tableView.endUpdates()
